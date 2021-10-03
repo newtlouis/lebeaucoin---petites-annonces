@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
@@ -14,6 +15,27 @@
         {% endblock %}
     </head>
     <body>
+    <header>
+        <nav>
+            <a href="{{path('app_home')}}">Le Beau Coin</a>
+            <ul>
+                <li><a href="{{path('app_home')}}">Accueil</a></li>
+                <li><a href="">Rechercher</a></li>
+                <li><a href="">Profil</a></li>
+                <li><a href="">Lougout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
         {% block body %}{% endblock %}
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="">Copyright</a></li>    
+            <li><a href="">Contact</a></li>    
+        </ul>
+    </footer>
     </body>
 </html>
