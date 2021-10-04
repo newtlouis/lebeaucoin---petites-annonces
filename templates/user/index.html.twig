@@ -1,16 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!
+{% block title %}Bonjour {{app.user.name}} {{app.user.firstname}}
 {% endblock %}
 
 {% block body %}
-	<h1>Bonjour
-		{{app.user.name}}
-		{{app.user.firstname}}</h1>
-	<p>Adresse email:
-		{{app.user.email}}</p>
 
-	<a href="#">Modifier le profil</a>
+    <h1>Bonjour {{app.user.name}} {{app.user.firstname}}</h1>
+
+	<p>Adresse email:{{app.user.email}}</p>
+
+	<a href="{{path('user_profil_modifier') }}">Modifier le profil</a>
 
 	<div class="annonces">
 		<h2>Toutes mes annonces en ligne:</h2>
