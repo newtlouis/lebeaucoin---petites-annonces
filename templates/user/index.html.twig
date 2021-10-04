@@ -5,11 +5,16 @@
 
 {% block body %}
 
+    {% for message in app.flashes('message') %}
+        <div class="success">{{ message }}</div>
+    {% endfor %}
+
     <h1>Bonjour {{app.user.name}} {{app.user.firstname}}</h1>
 
 	<p>Adresse email:{{app.user.email}}</p>
 
 	<a href="{{path('user_profil_modifier') }}">Modifier le profil</a>
+	<a href="{{path('user_pass_modifier') }}">Modifier le mot de passe</a>
 
 	<div class="annonces">
 		<h2>Toutes mes annonces en ligne:</h2>

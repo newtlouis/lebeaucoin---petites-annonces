@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
@@ -29,7 +30,7 @@ class UserController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $annonce->setUser($this->getUser());
             $annonce->setActive(false);
 
@@ -53,7 +54,7 @@ class UserController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -65,5 +66,27 @@ class UserController extends AbstractController
         return $this->render('user/editProfil.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    #[Route('/user/pass/modifier', name: 'user_pass_modifier')]
+    public function editPass(Request $request, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        if ($request->isMethod('POST')) {
+            $em = $this->getDoctrine()->getManager();
+
+            $user = $this->getUser();
+
+            if ($request->request->get('pass') == $request->request->get('pass2')) {
+                $user->setPassword($passwordHasher->hashPassword($user, $request->request->get('pass')));
+                $em->flush();
+                $this->addFlash('message', 'Le mot de passe a bien été mis à jour');
+
+                return $this->redirectToRoute('user');
+            } else {
+                $this->addFlash('error', 'Les deux mots de passe ne sont pas identiques');
+            }
+        }
+
+        return $this->render('user/editPass.html.twig');
     }
 }
