@@ -61,4 +61,16 @@ class AnnoncesController extends AbstractController
        return new Response("true");
         
     }
+
+    #[Route('/supprimer/{id}', name: 'supprimer')]
+    public function supprimerAnnonce(Annonces $annonce): Response
+    {
+       $em = $this->getDoctrine()->getManager();
+       $em->remove($annonce);
+       $em->flush();
+       $this->addFlash('message', 'L\'annonce a bien été supprimée ');
+
+       return $this->redirectToRoute("admin_annonces_home");
+        
+    }
 }
