@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les annonces{% endblock %}
+
+{% block body %}
+<h1>Gérer les annonces</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Date</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for annonce in annonces %}
+        <tr>
+            <td>{{annonce.id}}</td>
+            <td>{{annonce.title}}</td>
+            <td>{{annonce.createdAt|date}}</td>
+            <td>{{annonce.active}}
+                <input type="checkbox" {{(annonce.active) ? 'checked' : ''}} data-id="{{annonce.id}}">
+            </td>
+            <td><a href="{{path('admin_annonces_modifier', {id:annonce.id})}}">Modifier</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            let activer = document.querySelectorAll("[type=checkbox]")
+            for(let bouton of activer){
+                bouton.addEventListener("click", function(){
+                    let xmlhttp = new XMLHttpRequest;
+                    xmlhttp.open("get", `/admin/annonces/activer/${this.dataset.id}`)
+                    xmlhttp.send()
+                })
+            }
+        }
+    </script>
+{% endblock %}
