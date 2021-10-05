@@ -20,7 +20,8 @@
 			</div>
 			<div class="content">
 				<div class="title">{{annonce.title}}</div>
-				<div class="description">{{annonce.content}}</div>
+				<div class="categorie">{{ annonce.categories }}</div>
+				<div class="description">{{annonce.content|striptags|u.truncate(50, '...')}}</div>
 			</div>
 		</div>
 	{% endfor %}
