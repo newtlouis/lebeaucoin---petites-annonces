@@ -4,5 +4,12 @@
 
 {% block body %}
 <h1>Ajouter une catégorie</h1>
-{{form(form)}}
+{{ form_start(form) }}
+
+	<div class="form__item">{{ form_row(form.name, {'label': 'Nom'}) }}</div>
+	<div class="form__item">{{ form_row(form.parent, {'label': 'Parent'}) }}</div>
+	<div class="form__item">{{ form_row(form.valider, {'attr': {'class': 'button'}}) }}</div>
+
+
+	{{ form_end(form) }}
 {% endblock %}

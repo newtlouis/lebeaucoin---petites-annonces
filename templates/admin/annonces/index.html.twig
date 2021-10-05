@@ -21,13 +21,13 @@
 					<td>{{annonce.id}}</td>
 					<td>{{annonce.title}}</td>
 					<td>{{annonce.createdAt|date}}</td>
-					<td>{{annonce.active}}
+					<td>
 						<input type="checkbox" {{(annonce.active) ? 'checked' : ''}} data-id="{{annonce.id}}">
 					</td>
 					<td>
-						<a href="{{path('admin_annonces_modifier', {id:annonce.id})}}">Modifier</a>
-						<br>
-						<a href="{{path('admin_annonces_supprimer', {id:annonce.id})}}">Supprimer</a>
+						{# <div class="button"><a href="{{path('admin_annonces_modifier', {id:annonce.id})}}">Modifier</a></div>
+						<br> #}
+						<div class="button"><a href="{{path('admin_annonces_supprimer', {id:annonce.id})}}">Supprimer</a></div>
 					</td>
 				</tr>
 			{% endfor %}

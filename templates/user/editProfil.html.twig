@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modification du profil de {{app.user.name}} {{app.user.firstname}}
+{% block title %}Modification du profil de
+	{{app.user.name}}
+	{{app.user.firstname}}
 {% endblock %}
 
 {% block body %}
 
-	<h1>Modification du profil de {{app.user.name}} {{app.user.firstname}}</h1>
-	<p>Adresse email:{{app.user.email}}</p>
+	<h1>Modification du profil de
+		{{app.user.name}}
+		{{app.user.firstname}}</h1>
 
-	<a href="#">Modifier le profil</a>
+	{{ form_start(form) }}
 
-	<div class="form">
-		{{form(form)}}
-	</div>
-{% endblock %}
+	<div class="form__item">{{ form_row(form.name, {'label': 'Nom'}) }}</div>
+	<div class="form__item">{{ form_row(form.firstname, {'label': 'Prénom'}) }}</div>
+	<div class="form__item">{{ form_row(form.valider, {'attr': {'class': 'button'}}) }}</div>
+
+
+	{{ form_end(form) }}
+</div>{% endblock %}
