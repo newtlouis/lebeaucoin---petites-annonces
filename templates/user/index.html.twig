@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bonjour {{app.user.name}} {{app.user.firstname}}
+{% block title %}{{app.user.name}} {{app.user.firstname}}
 {% endblock %}
 
 {% block body %}
@@ -11,17 +11,29 @@
 
     <h1>Bonjour {{app.user.name}} {{app.user.firstname}}</h1>
 
-	<p>Adresse email:{{app.user.email}}</p>
+	<p class="email">Adresse email:{{app.user.email}}</p>
 
-	<a href="{{path('user_profil_modifier') }}">Modifier le profil</a>
-	<a href="{{path('user_pass_modifier') }}">Modifier le mot de passe</a>
+	<a class= "button" href="{{path('user_profil_modifier') }}">Modifier le profil</a>
+	<a class= "button" href="{{path('user_pass_modifier') }}">Modifier le mot de passe</a>
 
 	<div class="annonces">
-		<h2>Toutes mes annonces en ligne:</h2>
-        <h3>Total: {{app.user.annonces|length}}</h3>
+		<h2 class="online">Toutes mes annonces en ligne:</h2>
+        <h3 class="total">Total: {{app.user.annonces|length}}</h3>
 
 		{% for annonce in app.user.annonces %}
-			<div class="titre">{{annonce.title}}</div>
+			<div class="annonce"><a href="{{path('annonces_details', {slug:annonce.slug })}}">
+			
+			<img src="{{ asset('uploads/') ~ annonce.images[0].name }}" alt="{{ annonce.title }}">
+			
+			<div class="content">
+				<div class="title">
+					<a href="{{path('annonces_details', {slug:annonce.slug })}}">{{annonce.title}}</a>
+				</div>
+				<div class="categorie">Catégorie: {{ annonce.categories }}</div>
+				<div class="description">{{annonce.content|striptags|u.truncate(50, '...')}}</div>
+			</div>
+		</a>
+		</div>
 		{% endfor %}
 	</div>
 {% endblock %}
