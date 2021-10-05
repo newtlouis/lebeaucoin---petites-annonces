@@ -1,9 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonce{% endblock %}
+{% block title %}Annonce
+{% endblock %}
 
 {% block body %}
 <h1>Ajouter votre nouvelle annonce</h1>
 
-{{form(form)}}
+{{ form_start(form) }}
+
+<div class="row">
+	<div class="title">
+		{{ form_row(form.title, {'label': 'Titre de l\'annonce'}) }}</div>
+		<div class="file">{{ form_row(form.images) }}</div>
+	</div>
+	<div class="form__item">{{ form_row(form.content, {'label': 'Description'}) }}</div>
+	<div class="form__item">{{ form_row(form.categories, {'label': 'Catégorie'}) }}</div>
+	<div class="form__item">{{ form_row(form.valider, {'attr': {'class': 'button'}}) }}</div>
+
+
+	{{ form_end(form) }}
 {% endblock %}

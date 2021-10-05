@@ -29,7 +29,7 @@ class AnnoncesType extends AbstractType
             ->add('categories', EntityType::class, [
                 'class' => Categories::class
             ])
-            ->add('Valider', SubmitType::class)
+            ->add('valider', SubmitType::class)
             
         ;
     }
