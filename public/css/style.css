@@ -5,8 +5,27 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 * {
-  color: red;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.logo a {
+  margin-left: 25px;
+  color: #f05f0b;
+  font-size: 50px;
+}
+
+.button {
+  padding: 15px;
+  margin: 10px;
+  color: white;
+  background: #f05f0b;
+  border-radius: 5px;
 }
 
 nav {
@@ -16,5 +35,52 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 5px;
+}
+
+.right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 30px;
+}
+
+.profil, .logout {
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profil i, .logout i {
+  font-size: 25px;
+  color: #f05f0b;
+}
+
+main {
+  margin: 90px 50px;
 }
 /*# sourceMappingURL=style.css.map */

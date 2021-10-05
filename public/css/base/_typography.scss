@@ -1,1 +1,11 @@
-*{color: red;}
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+.logo a{
+    margin-left: 25px ;
+    color:$primary__color;
+    font-size: 50px;
+}

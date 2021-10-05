@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <script src="https://kit.fontawesome.com/2bb2f2a2a8.js" crossorigin="anonymous"></script>
+
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
@@ -17,15 +19,22 @@
     <body>
     <header>
         <nav>
-            <a href="{{path('app_home')}}">Le Beau Coin</a>
             <div class="left">
                 <div class="logo"><a href="{{path('app_home')}}">Le Beau Coin</a></div>
-                <div class="new"><a href="{{path('user_annonces_ajout')}}">Déposer une annonce</a></div>
+                <div class="button new"><a href="{{path('user_annonces_ajout')}}">Déposer une annonce</a></div>
                 
             </div>
             <div class="right">
-                <a href="{{path('user')}}">Profil</a>
-                <a href="">Lougout</a>
+                <div class="profil">
+                    <div class="icone"><i class="fas fa-user"></i></div>
+                    <div class="txt"><a href="{{path('user')}}">Profil</a></div>
+                </div>
+
+                <div class="logout">
+                    <div class="icone"><i class="fas fa-sign-out-alt"></i></div>
+                    <div class="txt"><a href="">Logout</a></div>
+                </div>
+               
             </div>
         </nav>
     </header>
