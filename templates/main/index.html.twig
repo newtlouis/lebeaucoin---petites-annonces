@@ -19,7 +19,9 @@
 				<img src="{{ asset('uploads/') ~ annonce.images[0].name }}" alt="{{ annonce.title }}">
 			</div>
 			<div class="content">
-				<div class="title">{{annonce.title}}</div>
+				<div class="title">
+					<a href="{{path('annonces_details', {slug:annonce.slug })}}">{{annonce.title}}</a>
+				</div>
 				<div class="categorie">{{ annonce.categories }}</div>
 				<div class="description">{{annonce.content|striptags|u.truncate(50, '...')}}</div>
 			</div>

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{annonce.title}}
+{% endblock %}
+
+{% block body %}
+
+	<style>
+		img {
+			width: 200px
+		}
+	</style>
+
+	<div class="annonce">
+		{% for image in annonce.images %}
+			<div class="image">
+				<img src="{{ asset('uploads/') ~ image.name }}" alt="{{ annonce.title }}">
+			</div>
+		{% endfor %}
+
+		<div class="content">
+			<div class="title">{{annonce.title}}</div>
+			<div class="categorie">{{ annonce.categories }}</div>
+			<div class="description">{{annonce.content|raw}}</div>
+		</div>
+	</div>
+{% endblock %}
