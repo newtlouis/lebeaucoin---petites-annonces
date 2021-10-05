@@ -5,26 +5,21 @@
 
 {% block body %}
 
-	<style>
-		img {
-			width: 200px
-		}
-	</style>
-
-	<h1>Les annonces en lignes</h1>
+	<h1>Les dernières annonces</h1>
 
 	{% for annonce in annonces %}
-		<div class="annonce">
-			<div class="image">
-				<img src="{{ asset('uploads/') ~ annonce.images[0].name }}" alt="{{ annonce.title }}">
-			</div>
+		<div class="annonce"><a href="{{path('annonces_details', {slug:annonce.slug })}}">
+			
+			<img src="{{ asset('uploads/') ~ annonce.images[0].name }}" alt="{{ annonce.title }}">
+			
 			<div class="content">
 				<div class="title">
 					<a href="{{path('annonces_details', {slug:annonce.slug })}}">{{annonce.title}}</a>
 				</div>
-				<div class="categorie">{{ annonce.categories }}</div>
+				<div class="categorie">Catégorie: {{ annonce.categories }}</div>
 				<div class="description">{{annonce.content|striptags|u.truncate(50, '...')}}</div>
 			</div>
+		</a>
 		</div>
 	{% endfor %}
 
