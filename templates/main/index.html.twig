@@ -5,16 +5,22 @@
 
 {% block body %}
 
+	<style>
+		img {
+			width: 200px
+		}
+	</style>
+
 	<h1>Les annonces en lignes</h1>
 
 	{% for annonce in annonces %}
 		<div class="annonce">
 			<div class="image">
-                <img src="{{ asset('uploads/images/annonces') ~ annonce.images[0]] }}" alt="{{ annonce.title }}">
-            </div>
+				<img src="{{ asset('uploads/') ~ annonce.images[0].name }}" alt="{{ annonce.title }}">
+			</div>
 			<div class="content">
-				<div class="title"></div>
-				<div class="description"></div>
+				<div class="title">{{annonce.title}}</div>
+				<div class="description">{{annonce.content}}</div>
 			</div>
 		</div>
 	{% endfor %}
