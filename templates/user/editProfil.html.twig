@@ -7,6 +7,14 @@
 
 {% block body %}
 
+<style>
+footer{
+  
+    position:absolute;
+    bottom:0px;
+}
+</style>
+
 	<h1>Modification du profil de
 		{{app.user.name}}
 		{{app.user.firstname}}</h1>
@@ -16,6 +24,15 @@
 	<div class="form__item">{{ form_row(form.name, {'label': 'Nom'}) }}</div>
 	<div class="form__item">{{ form_row(form.firstname, {'label': 'Prénom'}) }}</div>
 	<div class="form__item">{{ form_row(form.valider, {'attr': {'class': 'button'}}) }}</div>
+
+	{# <br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br> #}
 
 
 	{{ form_end(form) }}
