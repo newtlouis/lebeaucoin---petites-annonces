@@ -14,10 +14,24 @@ img{
     border-radius: 10px;
 }
 
-.content{
-    display: flex;
-    flex-direction: column;
-    margin:40px ;
+// .content{
+//     display: flex;
+//     flex-direction: column;
+//     margin:40px ;
+// }
+.heart{
+    position: relative;
+    right: 70px;
+    top: 15px;
+    
+    font-size: 50px;
+    color: rgb(240, 38, 38);
+}
+.annonce__content{
+    position: relative;
+    right: 20px;
+    top: 20px;
+
 }
 
 .title{

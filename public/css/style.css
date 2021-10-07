@@ -106,7 +106,7 @@ footer {
 }
 
 main {
-  margin: 100px 250px;
+  margin: 100px 15vw;
 }
 
 .annonce {
@@ -126,15 +126,18 @@ img {
   border-radius: 10px;
 }
 
-.content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 40px;
+.heart {
+  position: relative;
+  right: 70px;
+  top: 15px;
+  font-size: 50px;
+  color: #f02626;
+}
+
+.annonce__content {
+  position: relative;
+  right: 20px;
+  top: 20px;
 }
 
 .title {
@@ -160,5 +163,9 @@ img {
 
 .total {
   margin-bottom: 5px;
+}
+
+.heart {
+  color: red;
 }
 /*# sourceMappingURL=style.css.map */

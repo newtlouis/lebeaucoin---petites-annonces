@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Annonces;
 use App\Repository\AnnoncesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,5 +26,38 @@ class AnnoncesController extends AbstractController
 
         return $this->render('annonces/details.html.twig', [
             "annonce" => $annonce]);
+    }
+
+    #[Route('/favoris/ajout/{id}', name: 'ajout_favoris')]
+    public function ajoutFavoris(Annonces $annonce): Response
+    {
+ 
+        if(!$annonce){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+
+        $annonce->addFavori($this->getUser());
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($annonce);
+        $em->flush();
+
+        return $this->redirectToRoute("app_home");
+    }
+
+    #[Route('/favoris/retrait/{id}', name: 'retrait_favoris')]
+    public function retraitFavoris(Annonces $annonce): Response
+    {
+ 
+        if(!$annonce){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+        $annonce->removeFavori($this->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($annonce);
+        $em->flush();
+
+        return $this->redirectToRoute("app_home");
     }
 }
