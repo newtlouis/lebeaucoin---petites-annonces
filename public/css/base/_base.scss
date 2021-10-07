@@ -9,6 +9,10 @@ a{
     color: black;
 }
 
+i{
+    color: $primary__color;
+}
+
 .flex{
     display: flex;
     flex-direction: column;

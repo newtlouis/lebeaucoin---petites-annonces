@@ -10,6 +10,10 @@ a {
   color: black;
 }
 
+i {
+  color: #f05f0b;
+}
+
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -131,7 +135,6 @@ img {
   right: 70px;
   top: 15px;
   font-size: 50px;
-  color: #f02626;
 }
 
 .annonce__content {
@@ -163,9 +166,5 @@ img {
 
 .total {
   margin-bottom: 5px;
-}
-
-.heart {
-  color: red;
 }
 /*# sourceMappingURL=style.css.map */
