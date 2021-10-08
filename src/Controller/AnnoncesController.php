@@ -20,19 +20,20 @@ class AnnoncesController extends AbstractController
     public function details($slug, AnnoncesRepository $annoncesRepo): Response
     {
         $annonce = $annoncesRepo->findOneBy(['slug' => $slug]);
-        if(!$annonce){
+        if (!$annonce) {
             throw new NotFoundHttpException('Pas d\'annonce trouvée');
         }
 
         return $this->render('annonces/details.html.twig', [
-            "annonce" => $annonce]);
+            "annonce" => $annonce
+        ]);
     }
 
     #[Route('/favoris/ajout/{id}', name: 'ajout_favoris')]
     public function ajoutFavoris(Annonces $annonce): Response
     {
- 
-        if(!$annonce){
+
+        if (!$annonce) {
             throw new NotFoundHttpException('Pas d\'annonce trouvée');
         }
 
@@ -48,8 +49,8 @@ class AnnoncesController extends AbstractController
     #[Route('/favoris/retrait/{id}', name: 'retrait_favoris')]
     public function retraitFavoris(Annonces $annonce): Response
     {
- 
-        if(!$annonce){
+
+        if (!$annonce) {
             throw new NotFoundHttpException('Pas d\'annonce trouvée');
         }
         $annonce->removeFavori($this->getUser());
@@ -59,5 +60,15 @@ class AnnoncesController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute("app_home");
+    }
+
+    #[Route('/favoris/show', name: 'show_favoris')]
+    public function showFavoris(): Response
+    {
+        // dump($this->getUser());
+
+        return $this->render('user/annonces/favoris.html.twig', [
+            "annonces" => $this->getUser()->getFavoris()
+        ]);
     }
 }
