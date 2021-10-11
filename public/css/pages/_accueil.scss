@@ -1,8 +1,19 @@
+.form-control{
+    padding: 10px;
+    width: 40%;
+}
+
+.titre__accueil{
+    margin-top: 20px;
+}
+
+
 .annonce{
     display: flex;
     margin: 20px 0;
     background-color: $tertiary__color;
     border-radius: 10px;
+    z-index: 0;
 }
 
 
@@ -28,9 +39,7 @@ img{
   
 }
 .annonce__content{
-    position: relative;
-    right: 20px;
-    top: 20px;
+   margin-top: 40px;
 
 }
 
